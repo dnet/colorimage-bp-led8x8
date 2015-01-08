@@ -70,6 +70,7 @@ Display board layout
  - `right` and `left` are referred to as when looking at the LEDs
  - row pins must be positive, col pins must be grounded for LEDs to light
 
+
 	.------------------------------.
 	|        COLOR  IMAGE    (TOP) |
 	|          BUDAPEST            |
