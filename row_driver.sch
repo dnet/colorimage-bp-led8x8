@@ -4700,7 +4700,7 @@ diameter 3 mm, horizontal, grid 12.7 mm</description>
 <net name="N$17" class="0">
 <segment>
 <pinref part="Q8" gate="G$1" pin="B"/>
-<wire x1="76.2" y1="46.99" x2="78.74" y2="46.99" width="0.1524" layer="91"/>
+<wire x1="74.93" y1="46.99" x2="78.74" y2="46.99" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$18" class="0">
