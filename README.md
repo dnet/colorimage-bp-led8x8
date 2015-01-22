@@ -60,6 +60,12 @@ Controller board
    - PORT D (PD2-PD5) for row addressing
  - 74HC138 3 to 8-line demux (row selection)
  - Darlington arrays for driving
+   - UDN2873A 8 channel source driver for rows
+   - ULN2003A 7 channel sink for columns + 1 transistor for 8th
+
+### Schematics ###
+
+![Row driver schematic](row_driver.png)
 
 Display board layout
 --------------------
