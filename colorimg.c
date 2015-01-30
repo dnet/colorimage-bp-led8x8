@@ -7,6 +7,8 @@
 #define ROW_DDR DDRD
 #define ROW_OFFSET 2
 #define COL_PORT PORTB
+#define COL_DATA 1
+#define COL_CLOCK 2
 #define ROW_MASK (7 << ROW_OFFSET)
 
 volatile uint8_t framebuf[NUM_ROWS];
@@ -20,9 +22,15 @@ volatile uint8_t framebuf[NUM_ROWS];
 uint8_t cur_row = 0;
 
 ISR( TIMER1_COMPA_vect ) {
+	uint8_t bit, fbrow;
 	if (cur_row++ >= NUM_ROWS) cur_row = 0;
 	PORTD &= ROW_MASK;
-	PORTB = framebuf[cur_row];
+	fbrow = framebuf[cur_row];
+	for (bit = 0x80; bit; bit >>= 1) {
+		COL_PORT = (fbrow & bit) == bit ? COL_DATA : 0;
+		COL_PORT |= COL_CLOCK;
+		COL_PORT &= ~COL_CLOCK;
+	}
 	PORTD |= cur_row << ROW_OFFSET;
 }
 
