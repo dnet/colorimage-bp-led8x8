@@ -7,6 +7,7 @@
 #define ROW_DDR DDRD
 #define ROW_OFFSET 2
 #define COL_PORT PORTB
+#define ROW_MASK (7 << ROW_OFFSET)
 
 volatile uint8_t framebuf[NUM_ROWS];
 
@@ -17,7 +18,6 @@ volatile uint8_t framebuf[NUM_ROWS];
 #define TIMER1_PRESCALE_1024 5
 
 uint8_t cur_row = 0;
-uint8_t ROW_MASK = 0xFF;
 
 ISR( TIMER1_COMPA_vect ) {
 	if (cur_row++ >= NUM_ROWS) cur_row = 0;
@@ -50,7 +50,6 @@ int main(void) {
 
 	for (uint8_t row = 0; row < NUM_ROWS; row++) {
 		framebuf[row] = 0xFF;
-		ROW_MASK &= ~(_BV(ROW_OFFSET) << row);
 	}
 
 	const uint16_t brr = F_CPU / 16 / 9600 - 1;
