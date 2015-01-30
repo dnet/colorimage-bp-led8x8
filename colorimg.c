@@ -54,7 +54,7 @@ ISR( USART_RX_vect  ) {
 int main(void) {
 
 	DDRB = 0xFF;
-	DDRD |= 4 + 8 + 16;
+	DDRD |= ROW_MASK;
 
 	for (uint8_t row = 0; row < NUM_ROWS; row++) {
 		framebuf[row] = row % 2 ? 0x55 : 0xAA;
