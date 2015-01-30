@@ -18,7 +18,7 @@ program: colorimg.hex
 
 FORMAT = ihex 		# create a .hex file
 
-OPT = s			# assembly-level optimization
+OPT = 2			# assembly-level optimization
 
 # Optional compiler flags.
 #  -g:        generate debugging information (for GDB, or for COFF conversion)
@@ -28,7 +28,7 @@ OPT = s			# assembly-level optimization
 #  -Wa,...:   tell GCC to pass this to the assembler.
 #    -ahlms:  create assembler listing
 CFLAGS = -g -O$(OPT) \
--funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums \
+-funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -funroll-loops \
 -Wall -Wstrict-prototypes \
 -DF_CPU=$(F_CPU) \
 -Wa,-adhlns=$(<:.c=.lst) \
