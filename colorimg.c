@@ -49,7 +49,7 @@ int main(void) {
 	DDRD |= 4 + 8 + 16;
 
 	for (uint8_t row = 0; row < NUM_ROWS; row++) {
-		framebuf[row] = 0xFF;
+		framebuf[row] = row % 2 ? 0x55 : 0xAA;
 	}
 
 	const uint16_t brr = F_CPU / 16 / 9600 - 1;
