@@ -12,7 +12,7 @@ burn-fuse:
 	$(AVRDUDE) $(AVRDUDE_FLAGS) -u -U lfuse:w:0x64:m
 
 # this programs the dependant hex file using our default avrdude flags
-program: seg7.hex
+program: colorimg.hex
 	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH)$<
 
 
