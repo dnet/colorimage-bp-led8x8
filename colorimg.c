@@ -7,6 +7,7 @@
 #define ROW_DDR DDRD
 #define ROW_OFFSET 2
 #define COL_PORT PORTB
+#define COL_DDR DDRB
 #define COL_DATA 1
 #define COL_CLOCK 2
 #define ROW_MASK (7 << ROW_OFFSET)
@@ -53,8 +54,8 @@ ISR( USART_RX_vect  ) {
 
 int main(void) {
 
-	DDRB = 0xFF;
-	DDRD |= ROW_MASK;
+	COL_DDR |= COL_DATA | COL_CLOCK;
+	ROW_DDR |= ROW_MASK;
 
 	for (uint8_t row = 0; row < NUM_ROWS; row++) {
 		framebuf[row] = row % 2 ? 0x55 : 0xAA;
