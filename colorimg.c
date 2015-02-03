@@ -10,7 +10,7 @@
 #define COL_DDR DDRB
 #define COL_DATA 1
 #define COL_CLOCK 2
-#define ROW_MASK (7 << ROW_OFFSET)
+#define ROW_MASK ((NUM_ROWS - 1) << ROW_OFFSET)
 
 volatile uint8_t framebuf[NUM_ROWS];
 
