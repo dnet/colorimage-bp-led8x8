@@ -25,14 +25,13 @@ uint8_t cur_row = 0;
 ISR( TIMER1_COMPA_vect ) {
 	uint8_t bit, fbrow;
 	if (cur_row++ >= NUM_ROWS) cur_row = 0;
-	PORTD &= ROW_MASK;
 	fbrow = framebuf[cur_row];
 	for (bit = 0x80; bit; bit >>= 1) {
 		COL_PORT = (fbrow & bit) == bit ? COL_DATA : 0;
 		COL_PORT |= COL_CLOCK;
 		COL_PORT &= ~COL_CLOCK;
 	}
-	PORTD |= cur_row << ROW_OFFSET;
+	ROW_PORT = (ROW_PORT & ~ROW_MASK) | (cur_row << ROW_OFFSET);
 }
 
 #define  LEFT_SIDE 0x00
