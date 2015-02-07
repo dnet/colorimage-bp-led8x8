@@ -66,7 +66,7 @@ int main(void) {
 	UCSRB |= _BV(RXEN) | _BV(RXCIE);
 
 	TCCR1B = (1 << WGM12) | TIMER1_PRESCALE_1;
-	OCR1A = (uint16_t)5000;
+	OCR1A = (uint16_t)20000;
 
 	TIMSK |= 1 << OCIE1A;   // Output Compare Interrupt Enable (timer 1, OCR1A)
 	sei();                 // Set Enable Interrupts

@@ -1,15 +1,15 @@
 MCU = attiny2313
-F_CPU = 1000000   	# 1 MHz
+F_CPU = 8000000   	# 8 MHz
 #AVRDUDE_PORT = lpt1	# programmer connected to windows parallel
 AVRDUDE_PORT = /dev/ttyUSB0	# programmer connected to serial
 AVRDUDE_PROGRAMMER = stk500
 
 all: colorimg.hex
 
-# this is necessary if you've changed the factory default clock fuses
-# sets the proper fuse for 8MHz internal oscillator with /8 clk div
+# this is necessary if you're burning the AVR for the first time...
+# sets the proper fuse for 8MHz internal oscillator with no clk div
 burn-fuse:
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -u -U lfuse:w:0x64:m
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -u -U lfuse:w:0xe4:m
 
 # this programs the dependant hex file using our default avrdude flags
 program: colorimg.hex
