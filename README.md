@@ -8,7 +8,7 @@ Dependencies: `make` `gcc-avr` `avrdude`
 
 	make program
 
-If you've already changed the clock settings from the factory default,
+If you haven't changed the clock settings to 8 MHz and no clock divider,
 you'll also need to run `make burn-fuse`
 
 Protocol
@@ -55,7 +55,7 @@ Display:
 Controller board
 ----------------
 
- - ATtiny2313 microcontroller running at 1 MHz (internal clock)
+ - ATtiny2313 microcontroller running at 8 MHz (internal clock)
    - PORT B (PB0-PB7) for column addressing
    - PORT D (PD2-PD5) for row addressing
  - 74HC138 3 to 8-line demux (row selection)
