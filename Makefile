@@ -29,7 +29,7 @@ OPT = 2			# assembly-level optimization
 #    -ahlms:  create assembler listing
 CFLAGS = -g -O$(OPT) \
 -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -funroll-loops \
--Wall -Wstrict-prototypes \
+-Wall -Wstrict-prototypes -Wextra \
 -DF_CPU=$(F_CPU) \
 -Wa,-adhlns=$(<:.c=.lst) \
 $(patsubst %,-I%,$(EXTRAINCDIRS)) \
