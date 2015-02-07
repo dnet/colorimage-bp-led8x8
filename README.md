@@ -56,12 +56,11 @@ Controller board
 ----------------
 
  - ATtiny2313 microcontroller running at 8 MHz (internal clock)
-   - PORT B (PB0-PB7) for column addressing
+   - PORT B (PB0-PB1) for column addressing with a shift register
    - PORT D (PD2-PD5) for row addressing
  - 74HC138 3 to 8-line demux (row selection)
- - Darlington arrays for driving
-   - UDN2873A 8 channel source driver for rows
-   - ULN2003A 7 channel sink for columns + 1 transistor for 8th
+ - 74HC164 8 bit serial-in parallel-out shift register (column buffer)
+ - transistors for driving
 
 ### Schematics ###
 
