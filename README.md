@@ -66,6 +66,8 @@ Controller board
 
 ![Row driver schematic](row_driver.png)
 
+![Col driver schematic](col_driver.png)
+
 Display board layout
 --------------------
 
