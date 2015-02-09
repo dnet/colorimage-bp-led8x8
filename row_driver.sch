@@ -4504,6 +4504,58 @@ diameter 3 mm, horizontal, grid 12.7 mm</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="supply1">
+<description>&lt;b&gt;Supply Symbols&lt;/b&gt;&lt;p&gt;
+ GND, VCC, 0V, +5V, -5V, etc.&lt;p&gt;
+ Please keep in mind, that these devices are necessary for the
+ automatic wiring of the supply signals.&lt;p&gt;
+ The pin name defined in the symbol is identical to the net which is to be wired automatically.&lt;p&gt;
+ In this library the device names are the same as the pin names of the symbols, therefore the correct signal names appear next to the supply symbols in the schematic.&lt;p&gt;
+ &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+</packages>
+<symbols>
+<symbol name="VCC">
+<wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
+<text x="-2.54" y="-2.54" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+<pin name="VCC" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
+</symbol>
+<symbol name="GND">
+<wire x1="-1.905" y1="0" x2="1.905" y2="0" width="0.254" layer="94"/>
+<text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="GND" x="0" y="2.54" visible="off" length="short" direction="sup" rot="R270"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="VCC" prefix="P+">
+<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
+<gates>
+<gate name="VCC" symbol="VCC" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="GND" prefix="GND">
+<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
+<gates>
+<gate name="1" symbol="GND" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -4541,6 +4593,8 @@ diameter 3 mm, horizontal, grid 12.7 mm</description>
 <part name="R6" library="resistor" deviceset="R-EU_" device="0207/12" value="1k"/>
 <part name="R7" library="resistor" deviceset="R-EU_" device="0207/12" value="1k"/>
 <part name="R8" library="resistor" deviceset="R-EU_" device="0207/12" value="1k"/>
+<part name="P+1" library="supply1" deviceset="VCC" device=""/>
+<part name="GND1" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4574,6 +4628,8 @@ diameter 3 mm, horizontal, grid 12.7 mm</description>
 <instance part="R6" gate="G$1" x="69.85" y="69.85"/>
 <instance part="R7" gate="G$1" x="69.85" y="58.42"/>
 <instance part="R8" gate="G$1" x="69.85" y="46.99"/>
+<instance part="P+1" gate="VCC" x="12.7" y="116.84"/>
+<instance part="GND1" gate="1" x="21.59" y="88.9"/>
 </instances>
 <busses>
 </busses>
@@ -4613,26 +4669,6 @@ diameter 3 mm, horizontal, grid 12.7 mm</description>
 <pinref part="JP2" gate="A" pin="3"/>
 <pinref part="IC1" gate="A" pin="C"/>
 <wire x1="5.08" y1="104.14" x2="21.59" y2="104.14" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$6" class="0">
-<segment>
-<pinref part="JP2" gate="A" pin="4"/>
-<pinref part="IC1" gate="A" pin="G1"/>
-<wire x1="5.08" y1="101.6" x2="21.59" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="21.59" y1="101.6" x2="21.59" y2="96.52" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$7" class="0">
-<segment>
-<pinref part="IC1" gate="A" pin="G2B"/>
-<pinref part="IC1" gate="A" pin="G2A"/>
-<wire x1="21.59" y1="91.44" x2="21.59" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="21.59" y1="93.98" x2="19.05" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="19.05" y1="93.98" x2="19.05" y2="99.06" width="0.1524" layer="91"/>
-<pinref part="JP2" gate="A" pin="5"/>
-<wire x1="19.05" y1="99.06" x2="5.08" y2="99.06" width="0.1524" layer="91"/>
-<junction x="21.59" y="93.98"/>
 </segment>
 </net>
 <net name="N$8" class="0">
@@ -4900,6 +4936,32 @@ diameter 3 mm, horizontal, grid 12.7 mm</description>
 <junction x="87.63" y="97.79"/>
 <junction x="87.63" y="109.22"/>
 <junction x="87.63" y="120.65"/>
+</segment>
+</net>
+<net name="VCC" class="0">
+<segment>
+<pinref part="JP2" gate="A" pin="4"/>
+<pinref part="IC1" gate="A" pin="G1"/>
+<wire x1="5.08" y1="101.6" x2="12.7" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="12.7" y1="101.6" x2="21.59" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="21.59" y1="101.6" x2="21.59" y2="96.52" width="0.1524" layer="91"/>
+<pinref part="P+1" gate="VCC" pin="VCC"/>
+<wire x1="12.7" y1="114.3" x2="12.7" y2="101.6" width="0.1524" layer="91"/>
+<junction x="12.7" y="101.6"/>
+</segment>
+</net>
+<net name="GND" class="0">
+<segment>
+<pinref part="IC1" gate="A" pin="G2B"/>
+<pinref part="IC1" gate="A" pin="G2A"/>
+<wire x1="21.59" y1="91.44" x2="21.59" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="21.59" y1="93.98" x2="19.05" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="19.05" y1="93.98" x2="19.05" y2="99.06" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="5"/>
+<wire x1="19.05" y1="99.06" x2="5.08" y2="99.06" width="0.1524" layer="91"/>
+<junction x="21.59" y="93.98"/>
+<pinref part="GND1" gate="1" pin="GND"/>
+<junction x="21.59" y="91.44"/>
 </segment>
 </net>
 </nets>
